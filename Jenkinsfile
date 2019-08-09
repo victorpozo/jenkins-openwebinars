@@ -1,37 +1,20 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Hello World!'
-        echo 'Hola, Mundo'
-      }
+    agent any
+    stage {
+        stage('Build') {
+            steps {
+                sh 'docker build -t app .'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'TEST'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'DEPLOY'
+            }
+        }
     }
-    post {
-      always {
-        echo 'Esto se ejecutará después del step'
-      }
-      success {
-        echo 'Paso terminado correctamente!'
-      }
-      failure {
-        echo 'ERROR'
-      }
-    }
-    stage('Test') {
-      steps {
-        echo 'Probando...'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        echo 'Desplegando...'
-      }
-    }
-    post {
-      always(dir) {
-        cleanWS
-      }
-    }
-  }
 }
