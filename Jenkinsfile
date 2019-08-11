@@ -6,10 +6,10 @@ pipeline {
         echo 'Hello World!'
         echo 'Hola, Mundo, estamos haciendo un build...'
       }
-    }
-    post{
-      always{
-        echo 'Fin de la construcción'
+      post{
+        always{
+          echo 'Fin de la construcción'
+        }
       }
     }
     stage('Test') {
