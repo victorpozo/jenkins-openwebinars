@@ -33,7 +33,10 @@ pipeline {
       echo 'Exito!'
     }
     failure{
-      echo 'FRACASO'
+      steps {
+        echo 'FRACASO'
+        echo 'Ahora sí'
+      }
     }
   }
 }
