@@ -15,6 +15,7 @@ pipeline {
     stage('Test') {
       steps {
         echo 'Probando...'
+        error 'Error'
       }
     }
     stage('Deploy') {
