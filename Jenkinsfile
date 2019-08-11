@@ -6,9 +6,12 @@ pipeline {
         echo 'Hello World!'
         echo 'Hola, Mundo, estamos haciendo un build...'
       }
-      post{
-        always{
+      post {
+        success {
           echo 'Fin de la construcción'
+        }
+        failure {
+          echo 'Error durante la construcción'
         }
       }
     }
@@ -18,10 +21,26 @@ pipeline {
         sh '/bin/nc -vz localhost 22'
         sh '/bin/nc -vz localhost 80'
       }
+      post {
+        success {
+          echo 'Éxito en el test'
+        }
+        failure {
+          echo 'Error durante el test'
+        }
+      }
     }
     stage('Deploy') {
       steps {
         echo 'Desplegando...'
+      }
+      post {
+        success {
+          echo 'Fin del despliegue'
+        }
+        failure {
+          echo 'Error durante el despliegue'
+        }
       }
     }
   }
@@ -33,10 +52,7 @@ pipeline {
       echo 'Exito!'
     }
     failure{
-      steps {
-        echo 'FRACASO'
-        echo 'Ahora sí'
-      }
+      echo 'FRACASO'
     }
   }
 }
