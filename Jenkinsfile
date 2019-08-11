@@ -7,6 +7,11 @@ pipeline {
         echo 'Hola, Mundo, estamos haciendo un build...'
       }
     }
+    post{
+      always{
+        echo 'Fin de la construcción'
+      }
+    }
     stage('Test') {
       steps {
         echo 'Probando...'
