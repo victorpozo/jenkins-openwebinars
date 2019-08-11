@@ -47,6 +47,7 @@ pipeline {
   post{
     always{
       echo 'El fin del pipeline'
+      emailext body: 'Holi, esta es una prueba en Jenkins', subject: 'Prueba en Jenkins', to: 'vitoco21@gmail.com'
     }
     success{
       echo 'Exito!'
