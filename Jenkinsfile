@@ -15,8 +15,18 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Desplegando...'
-        mail bcc: '', body: 'Hola, esta es una prueba desde Jenkins.', cc: '', from: '', replyTo: '', subject: 'Prueba desde Jenkins', to: 'pozo.faunes@gmail.com'
       }
+    }
+  }
+  post{
+    always{
+      echo 'El fin del pipeline'
+    }
+    success{
+      echo 'Exito!'
+    }
+    failure{
+      echo 'FRACASO'
     }
   }
 }
