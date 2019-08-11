@@ -7,17 +7,6 @@ pipeline {
         echo 'Hola, Mundo, estamos haciendo un build...'
       }
     }
-    post {
-      always {
-        echo 'Esto se ejecutará después del step'
-      }
-      success {
-        echo 'Paso terminado correctamente!'
-      }
-      failure {
-        echo 'ERROR'
-      }
-    }
     stage('Test') {
       steps {
         echo 'Probando...'
