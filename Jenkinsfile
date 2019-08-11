@@ -17,10 +17,5 @@ pipeline {
         echo 'Desplegando...'
       }
     }
-    post {
-      always(dir) {
-        cleanWS
-      }
-    }
   }
 }
